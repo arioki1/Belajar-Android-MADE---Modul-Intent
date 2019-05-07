@@ -3,22 +3,27 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnMoveActivity;
     Button btnMoveWithDataActtivity;
+    Button btnMoveWithObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btnMoveActivity = findViewById(R.id.btn_move_activity);
         btnMoveActivity.setOnClickListener(this);
-        btnMoveWithDataActtivity = findViewById(R.id.move_with_data);
+
+        btnMoveWithDataActtivity = findViewById(R.id.btn_move_with_data);
         btnMoveWithDataActtivity.setOnClickListener(this);
+
+        btnMoveWithObject = findViewById(R.id.btn_move_activity_object);
+        btnMoveWithObject.setOnClickListener(this);
     }
 
     @Override
@@ -28,12 +33,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent moveIntent = new Intent(MainActivity.this, MoveActivity.class);
                 startActivity(moveIntent);
             break;
-            case R.id.move_with_data:
+            case R.id.btn_move_with_data:
                 Intent moveWithDataIntent = new Intent(MainActivity.this, MoveWithDataActivity.class);
                 moveWithDataIntent.putExtra(MoveWithDataActivity.EXTRA_NAME, "DicodingAcademy Boy");
                 moveWithDataIntent.putExtra(MoveWithDataActivity.EXTRA_AGE,5);
                 startActivity(moveWithDataIntent);
                 break;
+            case R.id.btn_move_activity_object:
+                Person person = new Person();
+                person.setName("DicodingAcademy");
+                person.setAge(5);
+                person.setEmail("academy@dicoding.com");
+                person.setCity("Bandung");
+
+                Intent moveWithObjectIntent = new Intent(MainActivity.this, MoveWithObjectActivity.class);
+                moveWithObjectIntent.putExtra(MoveWithObjectActivity.EXTRA_PERSON, person);
+
+                startActivity(moveWithObjectIntent);
         }
     }
 }

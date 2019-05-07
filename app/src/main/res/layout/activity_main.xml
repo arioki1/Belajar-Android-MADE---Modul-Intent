@@ -20,8 +20,14 @@
   <Button
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:id="@+id/move_with_data"
+      android:id="@+id/btn_move_with_data"
       android:layout_margin="@dimen/activity_vertical_margin"
       android:text="@string/move_with_data"/>
+  <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/btn_move_activity_object"
+      android:layout_marginBottom="@dimen/activity_vertical_margin"
+      android:text="@string/move_with_object"/>
 
 </LinearLayout>
